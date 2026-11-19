@@ -7,5 +7,6 @@ def calculate_eigenvalues(matrix: torch.Tensor) -> torch.Tensor:
     m = torch.tensor(matrix,dtype=torch.float32)
     eig = torch.linalg.eigvals(m)
     real = eig.real
-    s,_ = torch.sort(real,descending=True)
+    s,x = torch.sort(real,descending=True)
+    print(x)
     return s
