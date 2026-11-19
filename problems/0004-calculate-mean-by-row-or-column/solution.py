@@ -7,18 +7,8 @@ def calculate_matrix_mean(matrix, mode: str) -> torch.Tensor:
     Returns a 1-D tensor of means or raises ValueError on invalid mode.
     """
     a_t = torch.as_tensor(matrix, dtype=torch.float)
-    ans = []
-    if mode=="column":
-        for i in range(len(matrix[0])):
-            res = 0
-            for j in range(len(matrix)):
-                res+=matrix[j][i]
-            ans.append(res/(len(matrix)))
-    else:
-        for i in matrix:
-            res = sum(i)
-            ans.append(res/(len(matrix[0])))
-    return torch.tensor(ans)
+    if mode == "column":return torch.mean(a_t,0)
+    elif mode == "row":return torch.mean(a_t,1)
 
 
         
